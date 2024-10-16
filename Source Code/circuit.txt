@@ -6,9 +6,9 @@ module circuit_1(input a, input b, input c, output out);
     
     and #(5) (w1, a, b, c);
     not #(2) (nA, a);
-    or #(9) (w2, nA, c);
+    or #(10) (w2, nA, c);
     nand #(7) (w3, w2, w1);
 
-    xor #(1) (out, w2, w3);
+    xor(out, w2, w3);
     
 endmodule
