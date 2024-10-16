@@ -25,10 +25,10 @@ module circuit_1();
     output out;
     wire w1, w2, nA;
     
-    and (w1, a, b, c);
-    not (nA, a);
-    or (w2, nA, c);
-    nand (w3, w2, w1);
+    and #(5) (w1, a, b, c);
+    not #(2) (nA, a);
+    or #(10) (w2, nA, c);
+    nand #(7) (w3, w2, w1);
 
     xor(out, w2, w3);
     
