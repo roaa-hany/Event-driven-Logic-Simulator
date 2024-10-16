@@ -2,8 +2,8 @@
 
 module Circuit1(input A, input B, input C,output F);
 
-wire W1;
-and #(2) (W1,A,B);
-or #(1) (F,W1,C);
+wire W;
+and #(2) (W,A,B);
+or #(1) (F,W,C);
 
 endmodule

@@ -1,12 +1,12 @@
 `timescale 1ns / 1ps
 
-module circuit_3(input A,input B,input C,output out);
+module circuit_3(input A,input B,input C,output o);
 
-    wire w1;
-    wire w2;
+    wire w;
+    wire y;
 
-    and #(2) (w1,A,B);
-    not #(1) (w2,C);
-    xor #(3) (out,w1,w2);
+    and #(2) (w,A,B);
+    not #(1) (y,C);
+    xor #(3) (o,w,y);
 
 endmodule
