@@ -25,9 +25,9 @@ module circuit_2();
     output o;
     wire w1, bW1, nB;
     
-    not (nB, b);
-    and (w1, a, nB);
-    buf (bW1, w1);
-    nor(o, bW1, c);
+    not #(2) (nB, b);
+    and #(5) (w1, a, nB);
+    buf #(1) (bW1, w1);
+    nor #(7) (o, bW1, c);
 
 endmodule
