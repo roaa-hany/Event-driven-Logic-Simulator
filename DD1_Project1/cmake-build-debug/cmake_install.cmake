@@ -1,4 +1,4 @@
-# Install script for directory: C:/Users/hp/CLionProjects/DD1_Project1
+# Install script for directory: D:/Uniii/Semester 3/Digital Design I/Project 1/DD1_Project/DD1_Project1
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -45,5 +45,5 @@ endif()
 
 string(REPLACE ";" "\n" CMAKE_INSTALL_MANIFEST_CONTENT
        "${CMAKE_INSTALL_MANIFEST_FILES}")
-file(WRITE "C:/Users/hp/CLionProjects/DD1_Project1/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
+file(WRITE "D:/Uniii/Semester 3/Digital Design I/Project 1/DD1_Project/DD1_Project1/cmake-build-debug/${CMAKE_INSTALL_MANIFEST}"
      "${CMAKE_INSTALL_MANIFEST_CONTENT}")

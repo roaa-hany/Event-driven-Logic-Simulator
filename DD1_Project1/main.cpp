@@ -123,11 +123,13 @@ void readVerilog(const string& verilogFile) {
             }
         }
     }
+    for(auto it = inputs.begin(); it != inputs.end(); it++) {
+        cout << it->first << " " << it->second << endl;
+    }
 }
 
 int main() {
-
-
+    readVerilog("circuit.txt");
 
     return 0;
 }
