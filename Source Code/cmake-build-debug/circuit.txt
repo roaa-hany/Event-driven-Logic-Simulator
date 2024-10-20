@@ -2,11 +2,11 @@
 
 module circuit_1(input a, input b, input c, output o);
 
-    wire w, y, n, z;
+    wire w, y, nA, z;
     
     and #(1) (w,a,b);
-    not #(2) (n,a);
-    or #(3) (y,n,c);
+    not #(2) (nA,a);
+    or #(3) (y,nA,c);
     nand #(2) (z,y,w);
 
     xor #(1) (o,y,z);

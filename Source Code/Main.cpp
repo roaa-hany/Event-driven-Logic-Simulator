@@ -26,16 +26,21 @@ vector<string> split(const string &str, char delimiter) {
 }
 
 void readVerilogFile(const string& verilog);
-int evaluatevalue(char out);
-void readstimulifile(string stimulifile);
-void writinginsimulifile(string stimulifile);
+int evaluateValue(char out);
+void readStimuliFile(string stimuliFile);
+void writingInSimuliFile(string simuliFile);
 
 
 int main() {
     string verilog = "circuit.txt";
     readVerilogFile(verilog);
-    // readstimulifile("stimuli.txt");
-    // writinginsimulifile("simuli.txt");
+
+    string stimuli = "stimuli.txt";
+    readStimuliFile(stimuli);
+
+    string simuli = "simuli.txt";
+    writingInSimuliFile(simuli);
+
     return 0;
 }
 
@@ -159,174 +164,209 @@ void readVerilogFile(const string& verilogFile) {
     verilog.close();
 }
 
-// int evaluatevalue(char out) {
-//     string gate = outputs[out].at(0);
-//     int value=0;
-//     if(gate=="and") {
-//         char in1 = (outputs[out].at(1))[0];
-//         char in2 = (outputs[out].at(2))[0];
-//         int in1valueindex= inputs[in1].size()-1;
-//         int in2valueindex= inputs[in2].size()-1;
-//
-//         if(inputs[in1][in1valueindex]=="1" && inputs[in2][in2valueindex]=="1") {
-//             value=1;
-//         }
-//         else
-//             value=0;
-//     }
-//
-//     else if(gate=="or") {
-//         char in1 = (outputs[out].at(1))[0];
-//         char in2 = (outputs[out].at(2))[0];
-//         int in1valueindex= inputs[in1].size()-1;
-//         int in2valueindex= inputs[in2].size()-1;
-//
-//         if(inputs[in1][in1valueindex]=="0" && inputs[in2][in2valueindex]=="0") {
-//             value=0;
-//         }
-//         else
-//             value=1;
-//     }
-//
-//     else if(gate=="nor") {
-//         char in1 = (outputs[out].at(1))[0];
-//         char in2 = (outputs[out].at(2))[0];
-//         int in1valueindex= inputs[in1].size()-1;
-//         int in2valueindex= inputs[in2].size()-1;
-//
-//         if(inputs[in1][in1valueindex]=="0" && inputs[in2][in2valueindex]=="0") {
-//             value=1;
-//         }
-//         else
-//             value=0;
-//     }
-//
-//     else if(gate=="nand") {
-//         char in1 = (outputs[out].at(1))[0];
-//         char in2 = (outputs[out].at(2))[0];
-//         int in1valueindex= inputs[in1].size()-1;
-//         int in2valueindex= inputs[in2].size()-1;
-//
-//         if(inputs[in1][in1valueindex]=="1" && inputs[in2][in2valueindex]=="1") {
-//             value=0;
-//         }
-//         else
-//             value=1;
-//     }
-//     else if(gate=="xor") {
-//         char in1 = (outputs[out].at(1))[0];
-//         char in2 = (outputs[out].at(2))[0];
-//         int in1valueindex= inputs[in1].size()-1;
-//         int in2valueindex= inputs[in2].size()-1;
-//
-//         if(inputs[in1][in1valueindex]==inputs[in2][in2valueindex]) {
-//             value=0;
-//         }
-//         else
-//             value=1;
-//     }
-//     else if(gate=="xnor") {
-//         char in1 = (outputs[out].at(1))[0];
-//         char in2 = (outputs[out].at(2))[0];
-//         int in1valueindex= inputs[in1].size()-1;
-//         int in2valueindex= inputs[in2].size()-1;
-//
-//         if(inputs[in1][in1valueindex]==inputs[in2][in2valueindex]) {
-//             value=1;
-//         }
-//         else
-//             value=0;
-//     }
-//     else if(gate=="not") {
-//         char in1 = (outputs[out].at(1))[0];
-//         int in1valueindex= inputs[in1].size()-1;
-//
-//         if(inputs[in1][in1valueindex]=="1") {
-//             value=0;
-//         }
-//         else
-//             value=1;
-//     }
-//     else if(gate=="buf") {
-//         char in1 = (outputs[out].at(1))[0];
-//         int in1valueindex= inputs[in1].size()-1;
-//
-//         if(inputs[in1][in1valueindex]=="1") {
-//             value=1;
-//         }
-//         else
-//             value=0;
-//     }
-//     //needs to check whether this output is an input or not and if so, its value needs to be updated.
-//     if(!inputs[out].empty()) {
-//         int size = inputs[out].size();
-//         inputs[out][size-1]=to_string(value);
-//     }
-//     return value;
-// }
-// void readstimulifile(string stimulifile) {
-//     ifstream stimuli(stimulifile);
-//
-//
-//     if(!stimuli) {
-//         cerr<<"Error opening the stimuli file";
-//         return ;
-//     }
-//     else {
-//         string line;
-//         while (getline(stimuli, line)) {
-//             int position=line.find('#');
-//             string delay="";
-//             int i =position+1;
-//             for(i; i<line.size(); i++ ) {
-//                 if(line[i]==' ')
-//                     break;
-//                 delay=delay+line[i];
-//             }
-//             string inputname = string(1,line[i+1]);
-//             string inputvalue=string(1,line[i+3]);
-//             vector<string> event1;
-//             event1.push_back(delay);
-//             event1.push_back(inputname);
-//             event1.push_back(inputvalue);
-//             events.push_back(event1);
-//         }
-//     }
-// }
-// void writinginsimulifile(string stimulifile) {
-//     ofstream simuli;
-//     simuli.open("simuli.txt");
-//     //initializing the inputs to be zero so that line 264 works properly
-//     for (unordered_map<char, vector<string>>::iterator it = inputs.begin(); it != inputs.end(); ++it) {
-//         it->second.push_back("0");
-//     }
-//     if(simuli.is_open()) {
-//         while(events.size()>0) {
-//             vector<string> event=events.front();
-//             events.erase(events.begin());
-//             simuli<<event[0] <<","<<event[1]<<","<<event[2]<<endl;
-//             //this loop is there to handly many outputs connected to a single input
-//             for(int i =0; i<inputs[event[1][0]].size()-1; i++) {
-//                 char output=inputs[event[1][0]][i][0];
-//                 int size=outputs[output].size();
-//                 int finaldelay=(event[0][0]-'0')+(outputs[output][size-1][0]-'0');//final event delay = event delay + gate delay;
-//                 vector<string> newevent;
-//                 newevent.push_back(to_string(finaldelay));
-//                 newevent.push_back(string(1,output));
-//                 newevent.push_back(to_string(evaluatevalue(output)));
-//                 //simuli<<newevent[0]<<","<<newevent[1]<<","<<newevent[2]<<endl;
-//                 for(int j =0; j<events.size(); j++) {
-//                     int currentdelay = events[j][0][0]-'0';
-//                     if(currentdelay>finaldelay) {
-//                         events.insert(events.begin()+j,newevent);
-//                         break;
-//                     }
-//                 }
-//             }
-//
-//         }
-//     }
-//     else {
-//         cerr<<"Error opening the file";
-//     }
-// }
+int evaluateValue(string out) {
+    string gate = outputs[out].at(0);
+
+    int value = -1;                  //initial value of the output
+
+    if(gate == "and") {
+
+        int product = 1;
+        for(int i = 1; i < outputs[out].size() - 1; i++) {
+            string in = (outputs[out].at(i));
+            product = product * stoi(inputs[in][inputs[in].size() - 1]);
+            cout << inputs[in][inputs[in].size() - 1];
+        }
+
+        value = product;
+    }
+
+    else if(gate == "or") {
+
+        int sum = 0;
+        for(int i = 1; i < outputs[out].size() - 1; i++) {
+            string in = (outputs[out].at(i));
+            sum = sum + stoi(inputs[in][inputs[in].size() - 1]);
+        }
+
+        if(sum > 0) {
+            value = 1;
+        }
+        else {
+            value = 0;
+        }
+    }
+
+    else if(gate == "nor") {
+
+        int sum = 0;
+        for(int i = 1; i < outputs[out].size() - 1; i++) {
+            string in = (outputs[out].at(i));
+            sum = sum + stoi(inputs[in][inputs[in].size() - 1]);
+        }
+
+        if(sum > 0) {
+            value = 0;
+        }
+        else {
+            value = 1;
+        }
+    }
+
+    else if(gate == "nand") {
+
+        int product = 1;
+        for(int i = 1; i < outputs[out].size() - 1; i++) {
+            string in = (outputs[out].at(i));
+            product = product * stoi(inputs[in][inputs[in].size() - 1]);
+        }
+
+        if(product == 1) {
+            value = 0;
+        }
+        else {
+            value = 1;
+        }
+    }
+    else if(gate == "xor") {
+
+        int numberOfOnes = 0;
+        for(int i = 1; i < outputs[out].size() - 1; i++) {
+            string in = (outputs[out].at(i));
+
+            if(inputs[in][inputs[in].size() - 1] == "1") {
+                numberOfOnes++;
+            }
+        }
+
+        if(numberOfOnes % 2 == 1) {
+            value = 1;
+        }
+        else {
+            value = 0;
+        }
+    }
+    else if(gate == "xnor") {
+
+        int numberOfOnes = 0;
+        for(int i = 1; i < outputs[out].size() - 1; i++) {
+            string in = (outputs[out].at(i));
+
+            if(inputs[in][inputs[in].size() - 1] == "1") {
+                numberOfOnes++;
+            }
+        }
+
+        if(numberOfOnes % 2 == 1) {
+            value = 0;
+        }
+        else {
+            value = 1;
+        }
+    }
+    else if(gate == "not") {
+
+        string in = (outputs[out].at(1));
+
+        if(inputs[in][inputs[in].size()-1] == "1") {
+            value = 0;
+        }
+        else
+            value = 1;
+    }
+    else if(gate == "buf") {
+
+        string in = (outputs[out].at(1));
+
+        if(inputs[in][inputs[in].size()-1] == "1") {
+            value = 1;
+        }
+        else
+            value = 0;
+    }
+
+    //needs to check whether this output is an input or not and if so, its value needs to be updated.
+    if(inputs.find(out) != inputs.end()) {
+        int size = inputs[out].size();
+        inputs[out][size-1] = to_string(value);
+    }
+
+    return value;
+}
+
+void readStimuliFile(string stimuliFile) {
+    ifstream stimuli(stimuliFile);
+
+    if(!stimuli) {
+        cerr << "Error opening the file: " << stimuliFile;
+        return ;
+    }
+    else {
+        string line;
+
+        while (getline(stimuli, line)) {
+            size_t delayPos = line.find('#') + 1;
+            string delay = line.substr(delayPos, 1);
+
+            size_t inputEnd = line.find('=');
+            string inputName = trim(line.substr(delayPos + 1,inputEnd - (delayPos + 1)));
+
+            size_t valueEnd = line.find(';');
+            string inputValue = trim(line.substr(inputEnd + 1, valueEnd - (inputEnd + 1)));
+
+
+            vector<string> event1;
+            event1.push_back(delay);
+            event1.push_back(inputName);
+            event1.push_back(inputValue);
+
+            events.push_back(event1);
+        }
+    }
+}
+
+void writingInSimuliFile(string simuliFile) {
+    ofstream simuli;
+    simuli.open(simuliFile);
+
+    //initializing the inputs to be zero so that line 264 works properly
+    for (auto it = inputs.begin(); it != inputs.end(); ++it) {
+        it->second.push_back("0");
+    }
+
+    if(simuli.is_open()) {
+
+        while(!events.empty()) {
+            vector<string> event = events.front();
+            events.erase(events.begin());
+
+            simuli<< event[0] << "," << event[1] << "," << event[2] <<endl;
+
+            //this loop is there to handly many outputs connected to a single input
+            for(int i = 0; i < inputs[event[1]].size() - 1; i++) {
+
+                string output = inputs[event[1]][i];
+                int size = outputs[output].size();
+
+                int finaldelay = stoi(event[0]) + stoi(outputs[output][size-1]);//final event delay = event delay + gate delay;
+
+                vector<string> newevent;
+                newevent.push_back(to_string(finaldelay));
+                newevent.push_back(output);
+                newevent.push_back(to_string(evaluateValue(output)));
+
+                for(int j = 0; j < events.size(); j++) {
+                    int currentDelay = stoi(events[j][0]);
+
+                    if(currentDelay > finaldelay) {
+                        events.insert(events.begin() + j, newevent);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+    else {
+        cerr << "Error opening the file: " << simuliFile;
+    }
+}
