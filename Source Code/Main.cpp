@@ -1,4 +1,5 @@
 #include<bits/stdc++.h>
+#include<string>
 using namespace std;
 
 unordered_map<string, vector<string>> inputs;
@@ -166,8 +167,14 @@ void readVerilogFile(const string& verilogFile) {
 
 int evaluateValue(string out) {
     string gate = outputs[out].at(0);
-
-    int value = -1;                  //initial value of the output
+    bool validinputs=true;
+    for(int i = 1; i < outputs[out].size() - 1; i++) {
+        string in = (outputs[out].at(i));
+        if(stoi(inputs[in][inputs[in].size() - 1])==-1)
+            validinputs=false;
+    }
+    if(validinputs) {
+        int value = -1;                  //initial value of the output
 
     if(gate == "and") {
 
@@ -182,7 +189,7 @@ int evaluateValue(string out) {
     }
 
     else if(gate == "or") {
-
+        cout<<"or gate evaluation called"<<endl;
         int sum = 0;
         for(int i = 1; i < outputs[out].size() - 1; i++) {
             string in = (outputs[out].at(i));
@@ -195,6 +202,8 @@ int evaluateValue(string out) {
         else {
             value = 0;
         }
+        cout<<"or gate evaluation done"<<endl;
+
     }
 
     else if(gate == "nor") {
@@ -286,12 +295,18 @@ int evaluateValue(string out) {
     }
 
     //needs to check whether this output is an input or not and if so, its value needs to be updated.
-    if(inputs.find(out) != inputs.end()) {
-        int size = inputs[out].size();
-        inputs[out][size-1] = to_string(value);
-    }
+    // if(inputs.find(out) != inputs.end()) {
+    //     int size = inputs[out].size();
+    //     inputs[out][size-1] = to_string(value);
+    //     cout<<" evaluation called"<<endl;
+    //
+    // }
 
     return value;
+    }
+    else
+        return -1;
+
 }
 
 void readStimuliFile(string stimuliFile) {
@@ -322,6 +337,13 @@ void readStimuliFile(string stimuliFile) {
 
             events.push_back(event1);
         }
+
+        for(int i =0; i<events.size(); i++) {
+            for(int j =0; j<3;j++)
+                cout<<events[i][j]<<" ";
+            cout<<endl;
+        }
+
     }
 }
 
@@ -331,7 +353,7 @@ void writingInSimuliFile(string simuliFile) {
 
     //initializing the inputs to be zero so that line 264 works properly
     for (auto it = inputs.begin(); it != inputs.end(); ++it) {
-        it->second.push_back("0");
+        it->second.push_back("-1");
     }
 
     if(simuli.is_open()) {
@@ -340,27 +362,54 @@ void writingInSimuliFile(string simuliFile) {
             vector<string> event = events.front();
             events.erase(events.begin());
 
-            simuli<< event[0] << "," << event[1] << "," << event[2] <<endl;
+            if(inputs[event[1]].empty()) {
+                simuli<< event[0] << "," << event[1] << "," << event[2] <<endl;
+                cout<<"will not be added"<<endl;
+            }
+            else {
+                int inputssize= inputs[event[1]].size();
+                //updating inputs value based on the event
+                inputs[event[1]][inputssize-1]=event[2];
+                //this loop is there to handly many outputs connected to a single input
+                for(int i = 0; i < inputs[event[1]].size() - 1; i++) {
 
-            //this loop is there to handly many outputs connected to a single input
-            for(int i = 0; i < inputs[event[1]].size() - 1; i++) {
-
-                string output = inputs[event[1]][i];
-                int size = outputs[output].size();
-
-                int finaldelay = stoi(event[0]) + stoi(outputs[output][size-1]);//final event delay = event delay + gate delay;
-
-                vector<string> newevent;
-                newevent.push_back(to_string(finaldelay));
-                newevent.push_back(output);
-                newevent.push_back(to_string(evaluateValue(output)));
-
-                for(int j = 0; j < events.size(); j++) {
-                    int currentDelay = stoi(events[j][0]);
-
-                    if(currentDelay > finaldelay) {
-                        events.insert(events.begin() + j, newevent);
-                        break;
+                    string output = inputs[event[1]][i];
+                    int size = outputs[output].size();
+                    cout<<"output: "<<output<<endl;
+                    for(int n=0; n<size;n++)
+                        cout<<outputs[output][n]<<" ";
+                    int finaldelay = stoi(event[0]) + stoi(outputs[output][size-1]);//final event delay = event delay + gate delay;
+                    cout<<"final delay: "<<finaldelay<<endl;
+                    vector<string> newevent;
+                    newevent.push_back(to_string(finaldelay));
+                    newevent.push_back(output);
+                    cout<<"it is pussheeed"<<endl;
+                    newevent.push_back(to_string(evaluateValue(output)));
+                    cout<<"the new event that should be pushed"<<endl;
+                    for(int k =0; k<3;k++)
+                        cout<<newevent[k]<<" ";
+                    if(evaluateValue(output)!=-1) {
+                        simuli<< event[0] << "," << event[1] << "," << event[2] <<endl;
+                        bool added=false;
+                        for(int j = 0; j < events.size(); j++) {
+                            int currentDelay = stoi(events[j][0]);
+                            cout<<"current delay: "<<currentDelay<<endl;
+                            if(currentDelay > finaldelay) {
+                                cout<<"insert " << j <<endl;
+                                events.insert(events.begin() + j, newevent);
+                                added=true;
+                                break;
+                            }
+                        }
+                        if(!added) {
+                            events.push_back(newevent);
+                        }
+                        cout<<"events inside the writing function"<<endl;
+                        for(int i =0; i<events.size(); i++) {
+                            for(int j =0; j<3;j++)
+                                cout<<events[i][j]<<" ";
+                            cout<<endl;
+                        }
                     }
                 }
             }

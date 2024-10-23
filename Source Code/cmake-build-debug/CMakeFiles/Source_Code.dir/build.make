@@ -43,19 +43,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2024.2.1\bin\cmake\win\x64\bin\cmake.exe"
+CMAKE_COMMAND = "D:\cLion\CLion 2024.2.1\bin\cmake\win\x64\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "C:\Program Files\JetBrains\CLion 2024.2.1\bin\cmake\win\x64\bin\cmake.exe" -E rm -f
+RM = "D:\cLion\CLion 2024.2.1\bin\cmake\win\x64\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "D:\Uniii\Semester 3\Digital Design I\Project 1\DD1_Project\Source Code"
+CMAKE_SOURCE_DIR = "D:\Fall 2024\Digital Design 1\Project 1\DD1_Project\Source Code"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "D:\Uniii\Semester 3\Digital Design I\Project 1\DD1_Project\Source Code\cmake-build-debug"
+CMAKE_BINARY_DIR = "D:\Fall 2024\Digital Design 1\Project 1\DD1_Project\Source Code\cmake-build-debug"
 
 # Include any dependencies generated for this target.
 include CMakeFiles/Source_Code.dir/depend.make
@@ -69,18 +69,18 @@ include CMakeFiles/Source_Code.dir/progress.make
 include CMakeFiles/Source_Code.dir/flags.make
 
 CMakeFiles/Source_Code.dir/Main.cpp.obj: CMakeFiles/Source_Code.dir/flags.make
-CMakeFiles/Source_Code.dir/Main.cpp.obj: D:/Uniii/Semester\ 3/Digital\ Design\ I/Project\ 1/DD1_Project/Source\ Code/Main.cpp
+CMakeFiles/Source_Code.dir/Main.cpp.obj: D:/Fall\ 2024/Digital\ Design\ 1/Project\ 1/DD1_Project/Source\ Code/Main.cpp
 CMakeFiles/Source_Code.dir/Main.cpp.obj: CMakeFiles/Source_Code.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="D:\Uniii\Semester 3\Digital Design I\Project 1\DD1_Project\Source Code\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Source_Code.dir/Main.cpp.obj"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Source_Code.dir/Main.cpp.obj -MF CMakeFiles\Source_Code.dir\Main.cpp.obj.d -o CMakeFiles\Source_Code.dir\Main.cpp.obj -c "D:\Uniii\Semester 3\Digital Design I\Project 1\DD1_Project\Source Code\Main.cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir="D:\Fall 2024\Digital Design 1\Project 1\DD1_Project\Source Code\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/Source_Code.dir/Main.cpp.obj"
+	"D:\cLion\CLion 2024.2.1\bin\mingw\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/Source_Code.dir/Main.cpp.obj -MF CMakeFiles\Source_Code.dir\Main.cpp.obj.d -o CMakeFiles\Source_Code.dir\Main.cpp.obj -c "D:\Fall 2024\Digital Design 1\Project 1\DD1_Project\Source Code\Main.cpp"
 
 CMakeFiles/Source_Code.dir/Main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/Source_Code.dir/Main.cpp.i"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Uniii\Semester 3\Digital Design I\Project 1\DD1_Project\Source Code\Main.cpp" > CMakeFiles\Source_Code.dir\Main.cpp.i
+	"D:\cLion\CLion 2024.2.1\bin\mingw\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E "D:\Fall 2024\Digital Design 1\Project 1\DD1_Project\Source Code\Main.cpp" > CMakeFiles\Source_Code.dir\Main.cpp.i
 
 CMakeFiles/Source_Code.dir/Main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/Source_Code.dir/Main.cpp.s"
-	C:\PROGRA~1\JETBRA~1\CLION2~1.1\bin\mingw\bin\G__~1.EXE $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Uniii\Semester 3\Digital Design I\Project 1\DD1_Project\Source Code\Main.cpp" -o CMakeFiles\Source_Code.dir\Main.cpp.s
+	"D:\cLion\CLion 2024.2.1\bin\mingw\bin\g++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S "D:\Fall 2024\Digital Design 1\Project 1\DD1_Project\Source Code\Main.cpp" -o CMakeFiles\Source_Code.dir\Main.cpp.s
 
 # Object files for target Source_Code
 Source_Code_OBJECTS = \
@@ -94,7 +94,7 @@ Source_Code.exe: CMakeFiles/Source_Code.dir/build.make
 Source_Code.exe: CMakeFiles/Source_Code.dir/linkLibs.rsp
 Source_Code.exe: CMakeFiles/Source_Code.dir/objects1.rsp
 Source_Code.exe: CMakeFiles/Source_Code.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="D:\Uniii\Semester 3\Digital Design I\Project 1\DD1_Project\Source Code\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Source_Code.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir="D:\Fall 2024\Digital Design 1\Project 1\DD1_Project\Source Code\cmake-build-debug\CMakeFiles" --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable Source_Code.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\Source_Code.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
@@ -106,6 +106,6 @@ CMakeFiles/Source_Code.dir/clean:
 .PHONY : CMakeFiles/Source_Code.dir/clean
 
 CMakeFiles/Source_Code.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "D:\Uniii\Semester 3\Digital Design I\Project 1\DD1_Project\Source Code" "D:\Uniii\Semester 3\Digital Design I\Project 1\DD1_Project\Source Code" "D:\Uniii\Semester 3\Digital Design I\Project 1\DD1_Project\Source Code\cmake-build-debug" "D:\Uniii\Semester 3\Digital Design I\Project 1\DD1_Project\Source Code\cmake-build-debug" "D:\Uniii\Semester 3\Digital Design I\Project 1\DD1_Project\Source Code\cmake-build-debug\CMakeFiles\Source_Code.dir\DependInfo.cmake" "--color=$(COLOR)"
+	$(CMAKE_COMMAND) -E cmake_depends "MinGW Makefiles" "D:\Fall 2024\Digital Design 1\Project 1\DD1_Project\Source Code" "D:\Fall 2024\Digital Design 1\Project 1\DD1_Project\Source Code" "D:\Fall 2024\Digital Design 1\Project 1\DD1_Project\Source Code\cmake-build-debug" "D:\Fall 2024\Digital Design 1\Project 1\DD1_Project\Source Code\cmake-build-debug" "D:\Fall 2024\Digital Design 1\Project 1\DD1_Project\Source Code\cmake-build-debug\CMakeFiles\Source_Code.dir\DependInfo.cmake" "--color=$(COLOR)"
 .PHONY : CMakeFiles/Source_Code.dir/depend
 

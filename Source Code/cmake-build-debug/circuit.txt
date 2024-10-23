@@ -1,14 +1,9 @@
 `timescale 1ns / 1ps
 
-module circuit_1(input a, input b, input c, output o);
+module Circuit1(input A, input B, input C,output F);
 
-    wire w, y, nA, z;
-    
-    and #(1) (w,a,b);
-    not #(2) (nA,a);
-    or #(3) (y,nA,c);
-    nand #(2) (z,y,w);
+wire W;
+and #(2) (W,A,B);
+or #(1) (F,W,C);
 
-    xor #(1) (o,y,z);
-    
 endmodule
