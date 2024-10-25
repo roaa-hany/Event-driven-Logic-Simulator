@@ -1,19 +1,20 @@
 #include<bits/stdc++.h>
 #include<string>
+#include<iostream>
 using namespace std;
 
 unordered_map<string, vector<string>> inputs;
 unordered_map<string, vector<string>> outputs;
 vector<vector<string>> events;
 
-// Trim the unnecessary whitespaces
+// Parces the line into the string with white spaces and removes such whitespaces from the string and returns the string
 string trim(const string &str) {
     size_t first = str.find_first_not_of(" \t");
     size_t last = str.find_last_not_of(" \t");
     return (first == string::npos || last == string::npos) ? str : str.substr(first, last - first + 1);
 }
 
-// Split the inputs and outputs between the brackets
+// slices the string depending on the delimiter and symbol chosen for slicing and parcing and returns it
 vector<string> split(const string &str, char delimiter) {
     vector<string> tokens;
     stringstream ss(str);
@@ -26,10 +27,10 @@ vector<string> split(const string &str, char delimiter) {
     return tokens;
 }
 
-void readVerilogFile(const string& verilog);
-int evaluateValue(char out);
-void readStimuliFile(string stimuliFile);
-void writingInSimuliFile(string simuliFile);
+void readVerilogFile(const string& verilog); // Reads the the verilog file containing the module description
+int evaluateValue(char out); //evaluates the value based on each gate and returns the value as well as inserting it at the last element of the vector of outputs in the map of inputs
+void readStimuliFile(string stimuliFile); //Reads the stimuli file and creates events using the events vector
+void writingInSimuliFile(string simuliFile); //checks if the current output is the final output or an intermediate event
 
 
 int main() {
@@ -49,7 +50,7 @@ void readVerilogFile(const string& verilogFile) {
     ifstream verilog;
     verilog.open(verilogFile);
 
-    if(!verilog.is_open()) {
+    if(!verilog.is_open()) { // detects an error if the file does not open
         cerr << "Error opening file " << verilogFile << endl;
         return;
     }
@@ -58,14 +59,14 @@ void readVerilogFile(const string& verilogFile) {
 
         while(getline(verilog, line)) {
 
-            if(line.find("module") != string::npos || line.find("wire") != string::npos
+            if(line.find("module") != string::npos || line.find("wire") != string::npos // ignores certain keywords
                || line.find("endmodule") != string::npos || line.find("timescale") != string::npos) {
-                continue;
+                continue; //continues upon finding the kewords
                }
 
-                size_t delayPos = line.find('#');
+                size_t delayPos = line.find('#'); // find the position of the delay
 
-                string gateType = trim(line.substr(0, delayPos));
+                string gateType = trim(line.substr(0, delayPos)); //detects the gate type after parsing and slicing using the position of the delay
 
                 string delay;
                 if (delayPos != string::npos) {
@@ -162,19 +163,19 @@ void readVerilogFile(const string& verilogFile) {
                 }
             }
         }
-    verilog.close();
-}
+    verilog.close(); //closes the file and the last section of code puts the delay in the last element of the vector of outputs in the map of inputs and loops to place all inputs in the map as well as outputs in the vector of strings
+}                     // stores the inputs inside the vector of string in the map of outputs
 
 int evaluateValue(string out) {
     string gate = outputs[out].at(0);
     bool validinputs=true;
     for(int i = 1; i < outputs[out].size() - 1; i++) {
         string in = (outputs[out].at(i));
-        if(stoi(inputs[in][inputs[in].size() - 1])==-1)
+        if(stoi(inputs[in][inputs[in].size() - 1])==-1) // checks if the value of input is equal to -1, if so then the input is not valid and is empty
             validinputs=false;
     }
-    if(validinputs) {
-        int value = -1;                  //initial value of the output
+    if(validinputs) { // if the input value is true
+        int value = -1;                  //sets the value to the initial value of the output
 
     if(gate == "and") {
 
@@ -294,13 +295,7 @@ int evaluateValue(string out) {
             value = 0;
     }
 
-    //needs to check whether this output is an input or not and if so, its value needs to be updated.
-    // if(inputs.find(out) != inputs.end()) {
-    //     int size = inputs[out].size();
-    //     inputs[out][size-1] = to_string(value);
-    //     cout<<" evaluation called"<<endl;
-    //
-    // }
+
 
     return value;
     }
@@ -320,17 +315,17 @@ void readStimuliFile(string stimuliFile) {
         string line;
 
         while (getline(stimuli, line)) {
-            size_t delayPos = line.find('#') + 1;
+            size_t delayPos = line.find('#') + 1; //saves the delay in a variable
             string delay = line.substr(delayPos, 1);
 
             size_t inputEnd = line.find('=');
-            string inputName = trim(line.substr(delayPos + 1,inputEnd - (delayPos + 1)));
+            string inputName = trim(line.substr(delayPos + 1,inputEnd - (delayPos + 1))); //saves the name of the input
 
             size_t valueEnd = line.find(';');
-            string inputValue = trim(line.substr(inputEnd + 1, valueEnd - (inputEnd + 1)));
+            string inputValue = trim(line.substr(inputEnd + 1, valueEnd - (inputEnd + 1))); //saves the value of the input
 
 
-            vector<string> event1;
+            vector<string> event1; //creates a vector of events and pushes the data related to each event onto the vector
             event1.push_back(delay);
             event1.push_back(inputName);
             event1.push_back(inputValue);
@@ -362,15 +357,15 @@ void writingInSimuliFile(string simuliFile) {
             vector<string> event = events.front();
             events.erase(events.begin());
 
-            if(inputs[event[1]].empty()) {
+            if(inputs[event[1]].empty()) { //checks if the output is the final output or the intermediate output
                 simuli<< event[0] << "," << event[1] << "," << event[2] <<endl;
-                cout<<"will not be added"<<endl;
+                cout<<"will not be added"<<endl; //if the vector of ouputs is empty, then this is the final output and will be outputted
             }
             else {
                 int inputssize= inputs[event[1]].size();
-                //updating inputs value based on the event
+                //saves the input value from the event vector to the inputs map
                 inputs[event[1]][inputssize-1]=event[2];
-                //this loop is there to handly many outputs connected to a single input
+                //loops over all outputs of the first event in the input
                 for(int i = 0; i < inputs[event[1]].size() - 1; i++) {
 
                     string output = inputs[event[1]][i];
@@ -378,17 +373,17 @@ void writingInSimuliFile(string simuliFile) {
                     cout<<"output: "<<output<<endl;
                     for(int n=0; n<size;n++)
                         cout<<outputs[output][n]<<" ";
-                    int finaldelay = stoi(event[0]) + stoi(outputs[output][size-1]);//final event delay = event delay + gate delay;
+                    int finaldelay = stoi(event[0]) + stoi(outputs[output][size-1]);//The final delay is the sum of the gate delay and the input delay
                     cout<<"final delay: "<<finaldelay<<endl;
-                    vector<string> newevent;
+                    vector<string> newevent; //creates a new event and push the delay and output
                     newevent.push_back(to_string(finaldelay));
                     newevent.push_back(output);
                     cout<<"it is pussheeed"<<endl;
-                    newevent.push_back(to_string(evaluateValue(output)));
+                    newevent.push_back(to_string(evaluateValue(output))); //push the value of the output
                     cout<<"the new event that should be pushed"<<endl;
                     for(int k =0; k<3;k++)
                         cout<<newevent[k]<<" ";
-                    if(evaluateValue(output)!=-1) {
+                    if(evaluateValue(output)!=-1) { // if the value is not empty then the delay will be output and the events vector is sorted according to the events
                         simuli<< event[0] << "," << event[1] << "," << event[2] <<endl;
                         bool added=false;
                         for(int j = 0; j < events.size(); j++) {
