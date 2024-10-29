@@ -1,28 +1,20 @@
-name: DD1 code
+name: Super-Linter
 
-on:
-  push:
-      branches:
-        - main
+on: push
+
 jobs:
-  test:
-    runs-on: ubuntu - latest
-    defaults:
-      run:
-        working-directory: ./source code/
-    strategy:
-      matrix:
-        c++ - version: [11]
-    env:
-      MODE: "dev"
-    steps:
-      - uses: actions/checkout@v3
-      - name: Set up C++
-        uses: actions/setup-c++@v11
-        with:
-          c++ version: ${{matrix.c++-version}}
-      - name: Test Code
-        run: c++ ./main.cpp
+  super-lint:
+     name: Lint code base
+     runs-on: ubuntu-latest
+     steps:
+       - name: Checkout-code
+         uses: actions/checkout@v2
+       - name: Run Super-Linter
+         uses: github/super-linter@v3
+         env:
+           DEFAULT_BRANCH: main
+           GITUHB_TOKEN: ${{ secrets.GITUB_TOKEN }}
+
         
             
 
