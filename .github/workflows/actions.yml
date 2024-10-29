@@ -20,7 +20,7 @@ jobs:
       - name: Set up C++
         uses: actions/setup-c++@v11
         with:
-          c++version: ${{matrix.c++-version}}
+          c++ version: ${{matrix.c++-version}}
       - name: Test Code
         run: c++ ./main.cpp
         
