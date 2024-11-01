@@ -79,7 +79,7 @@ void readVerilogFile(const string& verilogFile) {
                     string ioString = line.substr(ioStart, ioEnd - ioStart);
 
                     vector<string> ioTokens = split(ioString, ',');
-
+                    //cout<<"the delay is " <<delay<<endl;
                     if(gateType == "and") {
                         outputs[ioTokens[0]].push_back("and");
 
@@ -316,10 +316,14 @@ void readStimuliFile(string stimuliFile) {
 
         while (getline(stimuli, line)) {
             size_t delayPos = line.find('#') + 1; //saves the delay in a variable
-            string delay = line.substr(delayPos, 1);
-
+            size_t delayfinalpos=delayPos;
+            while(line[delayfinalpos] != ' ') {
+                delayfinalpos++;
+            }
+            string delay = line.substr(delayPos, delayfinalpos-delayPos);
+            cout<<"The delay is: "<<delay<<endl;
             size_t inputEnd = line.find('=');
-            string inputName = trim(line.substr(delayPos + 1,inputEnd - (delayPos + 1))); //saves the name of the input
+            string inputName = trim(line.substr(delayfinalpos,inputEnd - (delayfinalpos))); //saves the name of the input
 
             size_t valueEnd = line.find(';');
             string inputValue = trim(line.substr(inputEnd + 1, valueEnd - (inputEnd + 1))); //saves the value of the input
