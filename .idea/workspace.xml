@@ -30,52 +30,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="7302df50-6602-43e8-9a4f-efab0ce567c7" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/.idea/.name" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/.idea/editor.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/.idea/untitled.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/CMakeLists.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/.cmake/api/v1/query/cache-v2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/.cmake/api/v1/query/cmakeFiles-v1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/.cmake/api/v1/query/codemodel-v2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/.cmake/api/v1/query/toolchains-v1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/.cmake/api/v1/reply/cache-v2-84c46bda43bda7b7ab29.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-842062d5f2f195d036b7.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-021b8c115ee69a7df5d7.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/.cmake/api/v1/reply/directory-.-Debug-d0094a50bb2071803777.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/.cmake/api/v1/reply/index-2024-10-19T18-18-15-0086.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/.cmake/api/v1/reply/target-untitled-Debug-1ecbad0745958dfd0cbc.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/.cmake/api/v1/reply/toolchains-v1-8ce3f78fc5758414dfe9.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/.ninja_deps" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/.ninja_log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/CMakeCache.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/CMakeFiles/3.29.6/CMakeCCompiler.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/CMakeFiles/3.29.6/CMakeCXXCompiler.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/CMakeFiles/3.29.6/CMakeDetermineCompilerABI_C.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/CMakeFiles/3.29.6/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/CMakeFiles/3.29.6/CMakeRCCompiler.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/CMakeFiles/3.29.6/CMakeSystem.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/CMakeFiles/3.29.6/CompilerIdC/CMakeCCompilerId.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/CMakeFiles/3.29.6/CompilerIdC/a.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/CMakeFiles/3.29.6/CompilerIdCXX/CMakeCXXCompilerId.cpp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/CMakeFiles/3.29.6/CompilerIdCXX/a.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/CMakeFiles/CMakeConfigureLog.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/CMakeFiles/cmake.check_cache" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/CMakeFiles/rules.ninja" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/CMakeFiles/untitled.dir/main.cpp.obj" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/build.ninja" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/circuit.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/cmake_install.cmake" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/cmake-build-debug/untitled.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/DD1_Project1/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source Code/Main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source Code/Main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source Code/cmake-build-debug/.cmake/api/v1/reply/cache-v2-ae43272b6675ead5a46a.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source Code/cmake-build-debug/.cmake/api/v1/reply/cmakeFiles-v1-c08761d1865fda3707d8.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source Code/cmake-build-debug/.cmake/api/v1/reply/codemodel-v2-3ff6621220f498c9b061.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source Code/cmake-build-debug/.cmake/api/v1/reply/index-2024-11-02T09-15-41-0382.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source Code/cmake-build-debug/.cmake/api/v1/reply/toolchains-v1-f3a85cf2e0f9015dcd3a.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source Code/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/Source Code/cmake-build-debug/.ninja_deps" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source Code/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/Source Code/cmake-build-debug/.ninja_log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source Code/cmake-build-debug/CMakeCache.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Source Code/cmake-build-debug/CMakeCache.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source Code/cmake-build-debug/CMakeFiles/3.29.6/CMakeCCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Source Code/cmake-build-debug/CMakeFiles/3.29.6/CMakeCCompiler.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source Code/cmake-build-debug/CMakeFiles/3.29.6/CMakeCXXCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Source Code/cmake-build-debug/CMakeFiles/3.29.6/CMakeCXXCompiler.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source Code/cmake-build-debug/CMakeFiles/3.29.6/CMakeDetermineCompilerABI_C.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Source Code/cmake-build-debug/CMakeFiles/3.29.6/CMakeDetermineCompilerABI_C.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source Code/cmake-build-debug/CMakeFiles/3.29.6/CMakeDetermineCompilerABI_CXX.bin" beforeDir="false" afterPath="$PROJECT_DIR$/Source Code/cmake-build-debug/CMakeFiles/3.29.6/CMakeDetermineCompilerABI_CXX.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source Code/cmake-build-debug/CMakeFiles/3.29.6/CMakeRCCompiler.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Source Code/cmake-build-debug/CMakeFiles/3.29.6/CMakeRCCompiler.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source Code/cmake-build-debug/CMakeFiles/3.29.6/CMakeSystem.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Source Code/cmake-build-debug/CMakeFiles/3.29.6/CMakeSystem.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source Code/cmake-build-debug/CMakeFiles/3.29.6/CompilerIdC/a.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Source Code/cmake-build-debug/CMakeFiles/3.29.6/CompilerIdC/a.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source Code/cmake-build-debug/CMakeFiles/3.29.6/CompilerIdCXX/a.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Source Code/cmake-build-debug/CMakeFiles/3.29.6/CompilerIdCXX/a.exe" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source Code/cmake-build-debug/CMakeFiles/CMakeConfigureLog.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/Source Code/cmake-build-debug/CMakeFiles/CMakeConfigureLog.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source Code/cmake-build-debug/CMakeFiles/Source_Code.dir/Main.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/Source Code/cmake-build-debug/CMakeFiles/Source_Code.dir/Main.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source Code/cmake-build-debug/CMakeFiles/Source_Code.dir/mainchecks.cpp.obj" beforeDir="false" afterPath="$PROJECT_DIR$/Source Code/cmake-build-debug/CMakeFiles/Source_Code.dir/mainchecks.cpp.obj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source Code/cmake-build-debug/CMakeFiles/TargetDirectories.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Source Code/cmake-build-debug/CMakeFiles/TargetDirectories.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source Code/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Source Code/cmake-build-debug/CMakeFiles/clion-Debug-log.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source Code/cmake-build-debug/CMakeFiles/clion-environment.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Source Code/cmake-build-debug/CMakeFiles/clion-environment.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source Code/cmake-build-debug/CMakeFiles/rules.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/Source Code/cmake-build-debug/CMakeFiles/rules.ninja" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source Code/cmake-build-debug/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Source Code/cmake-build-debug/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source Code/cmake-build-debug/Source_Code.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source Code/cmake-build-debug/Testing/Temporary/LastTest.log" beforeDir="false" afterPath="$PROJECT_DIR$/Source Code/cmake-build-debug/Testing/Temporary/LastTest.log" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source Code/cmake-build-debug/build.ninja" beforeDir="false" afterPath="$PROJECT_DIR$/Source Code/cmake-build-debug/build.ninja" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source Code/cmake-build-debug/cmake_install.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/Source Code/cmake-build-debug/cmake_install.cmake" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,7 +100,7 @@
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/wahba/Documents/GitHub/DD1_Project/Source Code/CMakeLists.txt",
+    "last_opened_file_path": "D:/Uniii/Semester 3/Digital Design I/Project 1/DD1_Project",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -126,17 +111,17 @@
   }
 }]]></component>
   <component name="RunManager" selected="CMake Application.Source_Code">
-    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
-      <method v="2">
-        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="DD1_Project" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" CONFIG_NAME="Debug" RUN_PATH="$PROJECT_DIR$/Source Code/Main.cpp" EXPLICIT_BUILD_TARGET_NAME="all">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
     </configuration>
     <configuration name="Source_Code" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="Source_Code" TARGET_NAME="Source_Code" CONFIG_NAME="Debug" RUN_TARGET_PROJECT_NAME="Source_Code" RUN_TARGET_NAME="Source_Code">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
         <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
       </method>
@@ -168,6 +153,7 @@
       <workItem from="1729863266729" duration="8000" />
       <workItem from="1729863341731" duration="218000" />
       <workItem from="1730538216468" duration="2401000" />
+      <workItem from="1730553353642" duration="2975000" />
     </task>
     <servers />
   </component>

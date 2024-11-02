@@ -1,3 +1,3 @@
-C:/Users/wahba/Documents/GitHub/DD1_Project/Source Code/cmake-build-debug/CMakeFiles/Source_Code.dir
-C:/Users/wahba/Documents/GitHub/DD1_Project/Source Code/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/wahba/Documents/GitHub/DD1_Project/Source Code/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+D:/Uniii/Semester 3/Digital Design I/Project 1/DD1_Project/Source Code/cmake-build-debug/CMakeFiles/Source_Code.dir
+D:/Uniii/Semester 3/Digital Design I/Project 1/DD1_Project/Source Code/cmake-build-debug/CMakeFiles/edit_cache.dir
+D:/Uniii/Semester 3/Digital Design I/Project 1/DD1_Project/Source Code/cmake-build-debug/CMakeFiles/rebuild_cache.dir

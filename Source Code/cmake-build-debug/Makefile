@@ -47,19 +47,19 @@ cmake_force:
 SHELL = cmd.exe
 
 # The CMake executable.
-CMAKE_COMMAND = "D:\cLion\CLion 2024.2.1\bin\cmake\win\x64\bin\cmake.exe"
+CMAKE_COMMAND = "C:\Program Files\JetBrains\CLion 2024.2.1\bin\cmake\win\x64\bin\cmake.exe"
 
 # The command to remove a file.
-RM = "D:\cLion\CLion 2024.2.1\bin\cmake\win\x64\bin\cmake.exe" -E rm -f
+RM = "C:\Program Files\JetBrains\CLion 2024.2.1\bin\cmake\win\x64\bin\cmake.exe" -E rm -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = "D:\Fall 2024\Digital Design 1\Project 1\DD1_Project\Source Code"
+CMAKE_SOURCE_DIR = "D:\Uniii\Semester 3\Digital Design I\Project 1\DD1_Project\Source Code"
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = "D:\Fall 2024\Digital Design 1\Project 1\DD1_Project\Source Code\cmake-build-debug"
+CMAKE_BINARY_DIR = "D:\Uniii\Semester 3\Digital Design I\Project 1\DD1_Project\Source Code\cmake-build-debug"
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -67,7 +67,7 @@ CMAKE_BINARY_DIR = "D:\Fall 2024\Digital Design 1\Project 1\DD1_Project\Source C
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "No interactive CMake dialog available..."
-	"D:\cLion\CLion 2024.2.1\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available."
+	"C:\Program Files\JetBrains\CLion 2024.2.1\bin\cmake\win\x64\bin\cmake.exe" -E echo "No interactive CMake dialog available."
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -77,7 +77,7 @@ edit_cache/fast: edit_cache
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --cyan "Running CMake to regenerate build system..."
-	"D:\cLion\CLion 2024.2.1\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	"C:\Program Files\JetBrains\CLion 2024.2.1\bin\cmake\win\x64\bin\cmake.exe" --regenerate-during-build -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -86,9 +86,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start "D:\Fall 2024\Digital Design 1\Project 1\DD1_Project\Source Code\cmake-build-debug\CMakeFiles" "D:\Fall 2024\Digital Design 1\Project 1\DD1_Project\Source Code\cmake-build-debug\\CMakeFiles\progress.marks"
+	$(CMAKE_COMMAND) -E cmake_progress_start "D:\Uniii\Semester 3\Digital Design I\Project 1\DD1_Project\Source Code\cmake-build-debug\CMakeFiles" "D:\Uniii\Semester 3\Digital Design I\Project 1\DD1_Project\Source Code\cmake-build-debug\\CMakeFiles\progress.marks"
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start "D:\Fall 2024\Digital Design 1\Project 1\DD1_Project\Source Code\cmake-build-debug\CMakeFiles" 0
+	$(CMAKE_COMMAND) -E cmake_progress_start "D:\Uniii\Semester 3\Digital Design I\Project 1\DD1_Project\Source Code\cmake-build-debug\CMakeFiles" 0
 .PHONY : all
 
 # The main clean target
@@ -152,6 +152,30 @@ Main.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\Source_Code.dir\build.make CMakeFiles/Source_Code.dir/Main.cpp.s
 .PHONY : Main.cpp.s
 
+mainchecks.obj: mainchecks.cpp.obj
+.PHONY : mainchecks.obj
+
+# target to build an object file
+mainchecks.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Source_Code.dir\build.make CMakeFiles/Source_Code.dir/mainchecks.cpp.obj
+.PHONY : mainchecks.cpp.obj
+
+mainchecks.i: mainchecks.cpp.i
+.PHONY : mainchecks.i
+
+# target to preprocess a source file
+mainchecks.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Source_Code.dir\build.make CMakeFiles/Source_Code.dir/mainchecks.cpp.i
+.PHONY : mainchecks.cpp.i
+
+mainchecks.s: mainchecks.cpp.s
+.PHONY : mainchecks.s
+
+# target to generate assembly for a file
+mainchecks.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\Source_Code.dir\build.make CMakeFiles/Source_Code.dir/mainchecks.cpp.s
+.PHONY : mainchecks.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -164,6 +188,9 @@ help:
 	@echo ... Main.obj
 	@echo ... Main.i
 	@echo ... Main.s
+	@echo ... mainchecks.obj
+	@echo ... mainchecks.i
+	@echo ... mainchecks.s
 .PHONY : help
 
 

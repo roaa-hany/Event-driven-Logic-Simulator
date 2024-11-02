@@ -1,11 +1,14 @@
 #include<bits/stdc++.h>
 #include<string>
 #include<iostream>
+
 using namespace std;
 
 unordered_map<string, vector<string>> inputs;
 unordered_map<string, vector<string>> outputs;
 vector<vector<string>> events;
+unordered_map<string, vector<string>> inputsValue;           //to store the values of the inputs over time needed to draw the waveform
+unordered_map<string, vector<string>> outputsValues;         //to store the values of the outputs over time needed to draw the waveform
 
 // Parces the line into the string with white spaces and removes such whitespaces from the string and returns the string
 string trim(const string &str) {
@@ -27,10 +30,11 @@ vector<string> split(const string &str, char delimiter) {
     return tokens;
 }
 
-void readVerilogFile(const string& verilog); // Reads the the verilog file containing the module description
+void readVerilogFile(const string& verilog); // Reads the verilog file containing the module description
 int evaluateValue(char out); //evaluates the value based on each gate and returns the value as well as inserting it at the last element of the vector of outputs in the map of inputs
 void readStimuliFile(string stimuliFile); //Reads the stimuli file and creates events using the events vector
 void writingInSimuliFile(string simuliFile); //checks if the current output is the final output or an intermediate event
+void writeWaveformSyntax(const string& filename); // Writes WaveDrom-compatible waveform syntax
 
 
 int main() {
@@ -42,6 +46,9 @@ int main() {
 
     string simuli = "simuli.txt";
     writingInSimuliFile(simuli);
+
+    string waveform = "waveDrom.txt";
+    writeWaveformSyntax(waveform);
 
     return 0;
 }
@@ -295,8 +302,6 @@ int evaluateValue(string out) {
             value = 0;
     }
 
-
-
     return value;
     }
     else
@@ -335,6 +340,9 @@ void readStimuliFile(string stimuliFile) {
             event1.push_back(inputValue);
 
             events.push_back(event1);
+
+            //stores the changed values
+            inputsValue[inputName].push_back(inputValue);
         }
 
         for(int i =0; i<events.size(); i++) {
@@ -417,4 +425,42 @@ void writingInSimuliFile(string simuliFile) {
     else {
         cerr << "Error opening the file: " << simuliFile;
     }
+}
+
+void writeWaveformSyntax(const string& filename) {
+    ofstream outFile(filename);
+
+    if (!outFile) {
+        cerr << "Error opening the file: " << filename << endl;
+        return;
+    }
+
+    outFile << "{\n"
+            << "  signal: [\n";
+
+    for (auto i = inputsValue.begin(); i != inputsValue.end(); i++) {
+        outFile << "    { name: \"" << i->first << "\", wave: \"";
+
+        // Adding wave values for inputs over time
+        for (const auto& value : i->second) {
+            outFile << (value == "1" ? "1" : (value == "0" ? "0" : "x")); // 'x' for undefined
+        }
+        outFile << "\" },\n";
+    }
+
+    for (auto i = outputsValues.begin(); i != outputsValues.end(); i++) {
+        outFile << "    { name: \"" << i->first << "\", wave: \"";
+
+        // Adding wave values for inputs over time
+        for (const auto& value : i->second) {
+            outFile << (value == "1" ? "1" : (value == "0" ? "0" : "x")); // 'x' for undefined
+        }
+        outFile << "\" },\n";
+    }
+
+    outFile << "  ]\n"
+            << "}\n";
+
+    outFile.close();
+    cout << "Waveform syntax written to " << filename << endl;
 }

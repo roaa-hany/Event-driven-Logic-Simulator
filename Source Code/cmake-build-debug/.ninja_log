@@ -1,12 +1,7 @@
 # ninja log v6
-10	2652	7522417615361179	CMakeFiles/Source_Code.dir/Main.cpp.obj	690e45de41c491c3
-2660	3466	7522417641862804	Source_Code.exe	863c7bbcaa1cc77c
-7	838	7522432300500625	CMakeFiles/Source_Code.dir/mainchecks.cpp.obj	23c4d4a0f8764bb5
-7	1962	7522432788669526	CMakeFiles/Source_Code.dir/Main.cpp.obj	690e45de41c491c3
-1963	2606	7522432808229142	Source_Code.exe	767a984af73c0b1
-8	802	7522435913295715	CMakeFiles/Source_Code.dir/mainchecks.cpp.obj	23c4d4a0f8764bb5
-803	1586	7522435921249578	Source_Code.exe	767a984af73c0b1
-5	720	7522436145339271	CMakeFiles/Source_Code.dir/mainchecks.cpp.obj	23c4d4a0f8764bb5
-721	1387	7522436152498307	Source_Code.exe	767a984af73c0b1
-8	777	7522437952036513	CMakeFiles/Source_Code.dir/mainchecks.cpp.obj	23c4d4a0f8764bb5
+19	498	7522569889754483	CMakeFiles/Source_Code.dir/mainchecks.cpp.obj	5a6e0fcdc632bd57
+21	1774	7522570246598164	CMakeFiles/Source_Code.dir/Main.cpp.obj	339a6dba1b0041c4
 777	1416	7522437959722356	Source_Code.exe	767a984af73c0b1
+4	312	7522589305233975	build.ninja	6fab7510c1af8131
+39	1745	7522589306400717	CMakeFiles/Source_Code.dir/Main.cpp.obj	339a6dba1b0041c4
+16	1555	7522595276814310	CMakeFiles/Source_Code.dir/Main.cpp.obj	339a6dba1b0041c4
