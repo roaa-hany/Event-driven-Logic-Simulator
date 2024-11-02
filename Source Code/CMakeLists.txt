@@ -4,4 +4,5 @@ project(Source_Code)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(Source_Code
-    Main.cpp)
+    Main.cpp
+        mainchecks.cpp)

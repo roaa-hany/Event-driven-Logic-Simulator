@@ -1,4 +1,4 @@
-set(CMAKE_CXX_COMPILER "D:/cLion/CLion 2024.2.1/bin/mingw/bin/g++.exe")
+set(CMAKE_CXX_COMPILER "C:/Users/wahba/Desktop/CLion 2024.2.3/bin/mingw/bin/g++.exe")
 set(CMAKE_CXX_COMPILER_ARG1 "")
 set(CMAKE_CXX_COMPILER_ID "GNU")
 set(CMAKE_CXX_COMPILER_VERSION "13.1.0")
@@ -22,14 +22,14 @@ set(CMAKE_CXX_SIMULATE_VERSION "")
 
 
 
-set(CMAKE_AR "D:/cLion/CLion 2024.2.1/bin/mingw/bin/ar.exe")
-set(CMAKE_CXX_COMPILER_AR "D:/cLion/CLion 2024.2.1/bin/mingw/bin/gcc-ar.exe")
-set(CMAKE_RANLIB "D:/cLion/CLion 2024.2.1/bin/mingw/bin/ranlib.exe")
-set(CMAKE_CXX_COMPILER_RANLIB "D:/cLion/CLion 2024.2.1/bin/mingw/bin/gcc-ranlib.exe")
-set(CMAKE_LINKER "D:/cLion/CLion 2024.2.1/bin/mingw/bin/ld.exe")
+set(CMAKE_AR "C:/Users/wahba/Desktop/CLion 2024.2.3/bin/mingw/bin/ar.exe")
+set(CMAKE_CXX_COMPILER_AR "C:/Users/wahba/Desktop/CLion 2024.2.3/bin/mingw/bin/gcc-ar.exe")
+set(CMAKE_RANLIB "C:/Users/wahba/Desktop/CLion 2024.2.3/bin/mingw/bin/ranlib.exe")
+set(CMAKE_CXX_COMPILER_RANLIB "C:/Users/wahba/Desktop/CLion 2024.2.3/bin/mingw/bin/gcc-ranlib.exe")
+set(CMAKE_LINKER "C:/Users/wahba/Desktop/CLion 2024.2.3/bin/mingw/bin/ld.exe")
 set(CMAKE_LINKER_LINK "")
 set(CMAKE_LINKER_LLD "")
-set(CMAKE_CXX_COMPILER_LINKER "D:/cLion/CLion 2024.2.1/bin/mingw/bin/ld.exe")
+set(CMAKE_CXX_COMPILER_LINKER "C:/Users/wahba/Desktop/CLion 2024.2.3/bin/mingw/bin/ld.exe")
 set(CMAKE_CXX_COMPILER_LINKER_ID "GNU")
 set(CMAKE_CXX_COMPILER_LINKER_VERSION 2.40)
 set(CMAKE_CXX_COMPILER_LINKER_FRONTEND_VARIANT GNU)
@@ -85,7 +85,7 @@ endif()
 
 
 
-set(CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES "D:/cLion/CLion 2024.2.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++;D:/cLion/CLion 2024.2.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32;D:/cLion/CLion 2024.2.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward;D:/cLion/CLion 2024.2.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include;D:/cLion/CLion 2024.2.1/bin/mingw/include;D:/cLion/CLion 2024.2.1/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed;D:/cLion/CLion 2024.2.1/bin/mingw/x86_64-w64-mingw32/include")
+set(CMAKE_CXX_IMPLICIT_INCLUDE_DIRECTORIES "C:/Users/wahba/Desktop/CLion 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++;C:/Users/wahba/Desktop/CLion 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32;C:/Users/wahba/Desktop/CLion 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/backward;C:/Users/wahba/Desktop/CLion 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include;C:/Users/wahba/Desktop/CLion 2024.2.3/bin/mingw/include;C:/Users/wahba/Desktop/CLion 2024.2.3/bin/mingw/lib/gcc/x86_64-w64-mingw32/13.1.0/include-fixed;C:/Users/wahba/Desktop/CLion 2024.2.3/bin/mingw/x86_64-w64-mingw32/include")
 set(CMAKE_CXX_IMPLICIT_LINK_LIBRARIES "")
 set(CMAKE_CXX_IMPLICIT_LINK_DIRECTORIES "")
 set(CMAKE_CXX_IMPLICIT_LINK_FRAMEWORK_DIRECTORIES "")

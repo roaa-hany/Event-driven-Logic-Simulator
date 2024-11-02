@@ -1,3 +1,0 @@
-"D:\cLion\CLion 2024.2.1\bin\cmake\win\x64\bin\cmake.exe" -E rm -f CMakeFiles\Source_Code.dir/objects.a
-"D:\cLion\CLion 2024.2.1\bin\mingw\bin\ar.exe" qc CMakeFiles\Source_Code.dir/objects.a @CMakeFiles\Source_Code.dir\objects1.rsp
-"D:\cLion\CLion 2024.2.1\bin\mingw\bin\g++.exe" -g -Wl,--whole-archive CMakeFiles\Source_Code.dir/objects.a -Wl,--no-whole-archive -o Source_Code.exe -Wl,--out-implib,libSource_Code.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\Source_Code.dir\linkLibs.rsp
