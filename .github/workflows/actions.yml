@@ -15,16 +15,21 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: '14'  # Specify your Node.js version
-
+      - name: Run Super-Linter
+        uses: github/super-linter@v3
       - name: Install dependencies
         run: npm install
-
+      - name: Run Super-Linter
+        uses: github/super-linter@v3
       - name: Run tests
         run: npm test
-
+      - name: Run Super-Linter
+        uses: github/super-linter@v3
       - name: Compare output
         run: mainchecks.cpp
         continue-on-error: false
+      - name: Run Super-Linter
+        uses: github/super-linter@v3
       - name : check for output
         run: if echo $ "{{ steps.run_command.outputs.stdout}}" grep -q "failed"; then 
             echo "Error condition detected"
