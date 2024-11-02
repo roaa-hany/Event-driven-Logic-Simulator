@@ -470,7 +470,7 @@ void writeWaveformSyntax(const string& filename) {
 
         // Adding wave values for inputs over time
         for (const auto& value : i->second) {
-            outFile << (value == "1" ? "1" : (value == "0" ? "0" : "x")); // 'x' for undefined
+            outFile << (value == "1" ? "1" : (value == "0" ? "0" : (value=="."?".": "x")));  // 'x' for undefined
         }
         outFile << "\" },\n";
     }
