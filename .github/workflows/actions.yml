@@ -3,9 +3,9 @@ name: CI running
 on: push
 
 jobs:
-  test:
-    runs-on: [macos-latest,windows-latest]
-
+  superlint:
+    name: supertlinter
+    runs-on: windows-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
