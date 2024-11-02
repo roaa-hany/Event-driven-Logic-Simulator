@@ -330,6 +330,7 @@ void readStimuliFile(string stimuliFile) {
     else {
         string line;
 
+        int time = 0;
         while (getline(stimuli, line)) {
             // read the file line by line
 
@@ -359,6 +360,15 @@ void readStimuliFile(string stimuliFile) {
 
             //add the event to the vector of events
             events.push_back(event1);
+
+            //keeps track of the values of inputs over time
+            while (time < stoi(delay)) {
+                for (auto& [key, val] : inputsValue) {
+                    val.push_back(time == stoi(delay) ? inputValue : ".");
+                }
+                time++;
+            }
+            inputsValue[inputName].back() = inputValue; // Update last value to current event's
         }
     }
 }
@@ -373,7 +383,6 @@ void writingInSimuliFile(string simuliFile) {
     }
 
     if(simuli.is_open()) {
-
         //reade the existing events
         while(!events.empty()) {
 
@@ -381,21 +390,21 @@ void writingInSimuliFile(string simuliFile) {
             vector<string> event = events.front();
             events.erase(events.begin());
 
-            //store the values of the inputs to draw the waveform
-            inputsValue[event[1]].push_back(event[2]);
-            for(auto it = inputsValue.begin(); it != inputsValue.end(); it++) {
-                if(it->first != event[1]) {
-                    it->second.push_back(".");
-                }
-            }
-
             //checks if the output is the final output or the intermediate output
             if(inputs[event[1]].empty()) {
                 simuli << event[0] << "," << event[1] << "," << event[2] << endl; //if the vector of outputs is empty, then this is the final output and will be outputted
+                int outputValue = evaluateValue(event[1]);
+                if (outputValue != -1) {
+                    outputsValues[event[1]].push_back(event[2]);
+                } else {
+                    outputsValues[event[1]].push_back("x");
+                }
             }
 
             //if the output is an input for another gate, create a newEvent with this output
             else {
+                outputsValues[0].push_back(".");
+
                 int inputssize= inputs[event[1]].size();
 
                 //saves the input value from the event vector to the inputs map
@@ -470,7 +479,7 @@ void writeWaveformSyntax(const string& filename) {
 
         // Adding wave values for inputs over time
         for (const auto& value : i->second) {
-            outFile << (value == "1" ? "1" : (value == "0" ? "0" : (value=="."?".": "x")));  // 'x' for undefined
+            outFile << (value == "1" ? "1" : (value == "0" ? "0" : (value == "." ? "." : "x")));  // 'x' for undefined
         }
         outFile << "\" },\n";
     }
