@@ -1,19 +1,38 @@
-name: Super-Linter
+name: CI running
 
 on: push
 
 jobs:
-  super-lint:
-     name: Lint code base
-     runs-on: ubuntu-latest
-     steps:
-       - name: Checkout-code
-         uses: actions/checkout@v2
-       - name: Run Super-Linter
-         uses: github/super-linter@v3
-         env:
-           DEFAULT_BRANCH: main
-           GITUHB_TOKEN: ${{ secrets.GITUB_TOKEN }}
+  test:
+    runs-on: [macos-latest,windows-latest]
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setting up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'  # Specify your Node.js version
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Run tests
+        run: npm test
+
+      - name: Compare output
+        run: mainchecks.cpp
+        continue-on-error: false
+      - name : check for output
+        run: if echo $ "{{ steps.run_command.outputs.stdout}}" grep -q "failed"; then 
+            echo "Error condition detected"
+            exit 1
+          else
+              echo "No error condition detected"
+          fi 
+          
+
 
         
             
