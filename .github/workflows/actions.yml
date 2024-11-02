@@ -32,6 +32,12 @@ jobs:
           else
               echo "No error condition detected"
           fi 
+      - name: Run Super-Linter
+        uses: github/super-linter@v3
+        env:
+           DEFAULT_BRANCH: main
+           GITUHB_TOKEN: ${{ secrets.GITUB_TOKEN }}
+
           
 
 
