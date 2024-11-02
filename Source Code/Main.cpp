@@ -312,7 +312,7 @@ int evaluateValue(string out) {
             else
                 value = 0;
         }
-
+        cout<<"the output is: "<<out<<" and the value is: "<<value<<endl;
         return value;              //return the calculated value of the output according to the gate type
     }
 
@@ -380,22 +380,35 @@ void writingInSimuliFile(string simuliFile) {
             //read each event one at a time and remove it from the existing events
             vector<string> event = events.front();
             events.erase(events.begin());
-
+            cout<<"the current event is: "<<event[0]<<" "<<event[1]<<" "<<event[2]<<endl;
             //store the values of the inputs to draw the waveform
             inputsValue[event[1]].push_back(event[2]);
+
             for(auto it = inputsValue.begin(); it != inputsValue.end(); it++) {
                 if(it->first != event[1]) {
                     it->second.push_back(".");
                 }
             }
-
+            for(auto it = inputs.begin(); it != inputs.end(); it++){
+                if(inputsValue[it->first].empty()) {
+                    inputsValue[it->first].push_back("x");
+                }
+            }
+            for(auto it = outputs.begin(); it != outputs.end(); it++){
+                if(inputsValue[it->first].empty()) {
+                    inputsValue[it->first].push_back("x");
+                }
+            }
             //checks if the output is the final output or the intermediate output
             if(inputs[event[1]].empty()) {
+                cout<<"it is the last event: "<<endl;
+                cout << event[0] << "," << event[1] << "," << event[2] << endl; //if the vector of outputs is empty, then this is the final output and will be outputted
                 simuli << event[0] << "," << event[1] << "," << event[2] << endl; //if the vector of outputs is empty, then this is the final output and will be outputted
             }
 
             //if the output is an input for another gate, create a newEvent with this output
             else {
+                simuli << event[0] << "," << event[1] << "," << event[2] <<endl;
                 int inputssize= inputs[event[1]].size();
 
                 //saves the input value from the event vector to the inputs map
@@ -413,10 +426,11 @@ void writingInSimuliFile(string simuliFile) {
                     newevent.push_back(to_string(finaldelay));
                     newevent.push_back(output);
                     newevent.push_back(to_string(evaluateValue(output))); //push the value of the output
+                    cout<<"the new evetn is: " <<newevent[0]<<","<<newevent[1]<<" " <<newevent[2]<<endl;
 
                     // if the value is not empty, then the event will be written to the simuli file and added to the events vector according to its total delay time
-                    if(evaluateValue(output) != -1) {
-                        simuli << event[0] << "," << event[1] << "," << event[2] <<endl;
+                    if(newevent[2] != "-1") {
+                        cout<<"the event will be added"<<endl;
 
                         bool added = false;
                         for(int j = 0; j < events.size(); j++) {
@@ -452,8 +466,29 @@ void writeWaveformSyntax(const string& filename) {
     }
 
     //writes the inputs and output and their values over time
+//     outFile << "{\n"
+//             << "  signal: [\n";
+//
+//     for (auto i = inputsValue.begin(); i != inputsValue.end(); i++) {
+//         outFile << "    { name: \"" << i->first << "\", wave: \"";
+//
+//         // Adding wave values for inputs over time
+//         for (const auto& value : i->second) {
+// outFile << (value == "1" ? "1" : (value == "0" ? "0" : (value=="."?".": "x")));         }
+//         outFile << "\" },\n";
+//     }
+//
+//     for (auto i = outputsValues.begin(); i != outputsValues.end(); i++) {
+//         outFile << "    { name: \"" << i->first << "\", wave: \"";
+//
+//         // Adding wave values for inputs over time
+//         for (const auto& value : i->second) {
+//             outFile << (value == "1" ? "1" : (value == "0" ? "0" : (value=="."?".": "x")));  // 'x' for undefined
+//         }
+//         outFile << "\" },\n";
+//     }
     outFile << "{\n"
-            << "  signal: [\n";
+            << "  signal: [\n" << "['Inputs', ";
 
     for (auto i = inputsValue.begin(); i != inputsValue.end(); i++) {
         outFile << "    { name: \"" << i->first << "\", wave: \"";
@@ -465,12 +500,13 @@ void writeWaveformSyntax(const string& filename) {
         outFile << "\" },\n";
     }
 
+    outFile << "], {}, ['Output', \n";
     for (auto i = outputsValues.begin(); i != outputsValues.end(); i++) {
         outFile << "    { name: \"" << i->first << "\", wave: \"";
 
         // Adding wave values for inputs over time
         for (const auto& value : i->second) {
-            outFile << (value == "1" ? "1" : (value == "0" ? "0" : (value=="."?".": "x")));  // 'x' for undefined
+            outFile << (value == "1" ? "1" : (value == "0" ? "0" : (value == "." ? "." : "x")));  // 'x' for undefined
         }
         outFile << "\" },\n";
     }
