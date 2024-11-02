@@ -8,7 +8,6 @@ unordered_map<string, vector<string>> inputs;                //stores each input
 unordered_map<string, vector<string>> outputs;               //stores each output name, and its corresponding vector of gatName, inputs associated with it, and the delay of the gate at the end of the vector
 vector<vector<string>> events;                               // stores the events where each event is a vector of inputName, delay, and changed value
 unordered_map<string, vector<string>> inputsValue;           //to store the values of the inputs over time needed to draw the waveform
-unordered_map<string, vector<string>> outputsValues;         //to store the values of the outputs over time needed to draw the waveform
 
 //removes unnecessary whitespaces from a string
 string trim(const string &str) {
@@ -466,47 +465,15 @@ void writeWaveformSyntax(const string& filename) {
     }
 
     //writes the inputs and output and their values over time
-//     outFile << "{\n"
-//             << "  signal: [\n";
-//
-//     for (auto i = inputsValue.begin(); i != inputsValue.end(); i++) {
-//         outFile << "    { name: \"" << i->first << "\", wave: \"";
-//
-//         // Adding wave values for inputs over time
-//         for (const auto& value : i->second) {
-// outFile << (value == "1" ? "1" : (value == "0" ? "0" : (value=="."?".": "x")));         }
-//         outFile << "\" },\n";
-//     }
-//
-//     for (auto i = outputsValues.begin(); i != outputsValues.end(); i++) {
-//         outFile << "    { name: \"" << i->first << "\", wave: \"";
-//
-//         // Adding wave values for inputs over time
-//         for (const auto& value : i->second) {
-//             outFile << (value == "1" ? "1" : (value == "0" ? "0" : (value=="."?".": "x")));  // 'x' for undefined
-//         }
-//         outFile << "\" },\n";
-//     }
     outFile << "{\n"
-            << "  signal: [\n" << "['Inputs', ";
+            << "  signal: [\n";
 
     for (auto i = inputsValue.begin(); i != inputsValue.end(); i++) {
         outFile << "    { name: \"" << i->first << "\", wave: \"";
 
         // Adding wave values for inputs over time
         for (const auto& value : i->second) {
-            outFile << (value == "1" ? "1" : (value == "0" ? "0" : "x")); // 'x' for undefined
-        }
-        outFile << "\" },\n";
-    }
-
-    outFile << "], {}, ['Output', \n";
-    for (auto i = outputsValues.begin(); i != outputsValues.end(); i++) {
-        outFile << "    { name: \"" << i->first << "\", wave: \"";
-
-        // Adding wave values for inputs over time
-        for (const auto& value : i->second) {
-            outFile << (value == "1" ? "1" : (value == "0" ? "0" : (value == "." ? "." : "x")));  // 'x' for undefined
+            outFile << (value == "1" ? "1" : (value == "0" ? "0" : (value=="."?".": "x")));
         }
         outFile << "\" },\n";
     }

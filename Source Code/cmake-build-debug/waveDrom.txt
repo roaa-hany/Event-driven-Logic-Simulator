@@ -1,10 +1,9 @@
 {
   signal: [
-['Inputs',     { name: "F", wave: "xxxx1xx1x0xx1xx0x0" },
-    { name: "B", wave: "x1xxxxxxxxxxx0xxxx" },
-    { name: "W", wave: "xxx1xx0xxxx1xx0xxx" },
-    { name: "C", wave: "xx1xxxxx0xxxxxxx0x" },
-    { name: "A", wave: "1xxxx0xxxx1xxxxxxx" },
-], {}, ['Output', 
+    { name: "F", wave: "x...1..1.0..1..0.0" },
+    { name: "B", wave: "x1...........0...." },
+    { name: "W", wave: "x..1..0....1..0..." },
+    { name: "C", wave: "x.1.....0.......0." },
+    { name: "A", wave: "1....0....1......." },
   ]
 }
