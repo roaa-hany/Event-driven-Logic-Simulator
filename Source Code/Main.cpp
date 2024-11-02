@@ -342,7 +342,7 @@ void readStimuliFile(string stimuliFile) {
             events.push_back(event1);
 
             //stores the changed values
-            inputsValue[inputName].push_back(inputValue);
+            //inputsValue[inputName].push_back(inputValue);
         }
 
         for(int i =0; i<events.size(); i++) {
@@ -368,7 +368,7 @@ void writingInSimuliFile(string simuliFile) {
         while(!events.empty()) {
             vector<string> event = events.front();
             events.erase(events.begin());
-
+            inputsValue[event[1]].push_back(event[2]);
             if(inputs[event[1]].empty()) { //checks if the output is the final output or the intermediate output
                 simuli<< event[0] << "," << event[1] << "," << event[2] <<endl;
                 cout<<"will not be added"<<endl; //if the vector of ouputs is empty, then this is the final output and will be outputted
@@ -392,6 +392,7 @@ void writingInSimuliFile(string simuliFile) {
                     newevent.push_back(output);
                     cout<<"it is pussheeed"<<endl;
                     newevent.push_back(to_string(evaluateValue(output))); //push the value of the output
+                    //outputsValues[output].push_back(to_string(evaluateValue(output))); //to store the outputs value to be added to the waveform
                     cout<<"the new event that should be pushed"<<endl;
                     for(int k =0; k<3;k++)
                         cout<<newevent[k]<<" ";

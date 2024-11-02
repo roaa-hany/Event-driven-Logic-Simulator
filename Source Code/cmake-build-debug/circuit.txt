@@ -3,7 +3,7 @@
 module Circuit1(input A, input B, input C,output F);
 
 wire W;
-nand #(20) (W,A,B);
+nand #(20) (W,nA,B);
 or #(12) (F,W,C);
 
 endmodule
