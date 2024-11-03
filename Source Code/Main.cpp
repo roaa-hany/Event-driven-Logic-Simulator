@@ -8,6 +8,7 @@ unordered_map<string, vector<string>> inputs;                //stores each input
 unordered_map<string, vector<string>> outputs;               //stores each output name, and its corresponding vector of gatName, inputs associated with it, and the delay of the gate at the end of the vector
 vector<vector<string>> events;                               // stores the events where each event is a vector of inputName, delay, and changed value
 unordered_map<string, vector<string>> inputsValue;           //to store the values of the inputs over time needed to draw the waveform
+unordered_map<string, vector<string>> outputsValue;          //to store the values of the outputs over time needed to draw the waveform
 
 //removes unnecessary whitespaces from a string
 string trim(const string &str) {
@@ -65,8 +66,10 @@ void readVerilogFile(const string& verilogFile) {
 
         while(getline(verilog, line)) {
 
-            if(line.find("module") != string::npos || line.find("wire") != string::npos // ignores unneeded lines
-               || line.find("endmodule") != string::npos || line.find("timescale") != string::npos) {
+            // ignores unneeded lines
+            if(line.find("module") != string::npos || line.find("wire") != string::npos
+               || line.find("endmodule") != string::npos || line.find("timescale") != string::npos
+               || line.find("input") != string::npos || line.find("output") != string::npos) {
                 continue; //skips upon finding the keywords
                }
 
@@ -311,7 +314,7 @@ int evaluateValue(string out) {
             else
                 value = 0;
         }
-        cout<<"the output is: "<<out<<" and the value is: "<<value<<endl;
+
         return value;              //return the calculated value of the output according to the gate type
     }
 
@@ -328,6 +331,7 @@ void readStimuliFile(string stimuliFile) {
     }
     else {
         string line;
+        int currentTime = 1;
 
         while (getline(stimuli, line)) {
             // read the file line by line
@@ -358,6 +362,17 @@ void readStimuliFile(string stimuliFile) {
 
             //add the event to the vector of events
             events.push_back(event1);
+
+            //maintain the old values of the inputs while they are not changed
+            while (currentTime < stoi(delay)) {
+                for(auto it = inputsValue.begin(); it != inputsValue.end(); it++) {
+                    it->second.push_back(".");
+                }
+                currentTime++;
+            }
+
+            // Now, at the specific event time, update the input value
+            inputsValue[inputName].push_back(inputValue);
         }
     }
 }
@@ -372,42 +387,37 @@ void writingInSimuliFile(string simuliFile) {
     }
 
     if(simuli.is_open()) {
+        int currentTime = 1;
 
         //reade the existing events
         while(!events.empty()) {
-
             //read each event one at a time and remove it from the existing events
             vector<string> event = events.front();
             events.erase(events.begin());
-            cout<<"the current event is: "<<event[0]<<" "<<event[1]<<" "<<event[2]<<endl;
-            //store the values of the inputs to draw the waveform
-            inputsValue[event[1]].push_back(event[2]);
 
-            for(auto it = inputsValue.begin(); it != inputsValue.end(); it++) {
-                if(it->first != event[1]) {
-                    it->second.push_back(".");
-                }
-            }
-            for(auto it = inputs.begin(); it != inputs.end(); it++){
-                if(inputsValue[it->first].empty()) {
-                    inputsValue[it->first].push_back("x");
-                }
-            }
-            for(auto it = outputs.begin(); it != outputs.end(); it++){
-                if(inputsValue[it->first].empty()) {
-                    inputsValue[it->first].push_back("x");
-                }
-            }
             //checks if the output is the final output or the intermediate output
             if(inputs[event[1]].empty()) {
-                cout<<"it is the last event: "<<endl;
-                cout << event[0] << "," << event[1] << "," << event[2] << endl; //if the vector of outputs is empty, then this is the final output and will be outputted
                 simuli << event[0] << "," << event[1] << "," << event[2] << endl; //if the vector of outputs is empty, then this is the final output and will be outputted
+
+                // update the output value to draw the waveform
+                while(currentTime < stoi(event[0])) {
+                    for(auto it = outputs.begin(); it != outputs.end(); it++){
+                        if(outputsValue[it->first].empty()) {
+                            outputsValue[it->first].push_back("x");
+                        }
+                        else {
+                            outputsValue[it->first].push_back(".");
+                        }
+                    }
+                    currentTime++;
+                }
+                outputsValue[event[1]].push_back(event[2]);
             }
 
-            //if the output is an input for another gate, create a newEvent with this output
+            //if the output is an input for another gate, print it, then create a newEvent with this output
             else {
                 simuli << event[0] << "," << event[1] << "," << event[2] <<endl;
+
                 int inputssize= inputs[event[1]].size();
 
                 //saves the input value from the event vector to the inputs map
@@ -415,7 +425,6 @@ void writingInSimuliFile(string simuliFile) {
 
                 //loops over all outputs associated with the input in the event
                 for(int i = 0; i < inputs[event[1]].size() - 1; i++) {
-
                     string output = inputs[event[1]][i];
                     int size = outputs[output].size();
 
@@ -425,12 +434,8 @@ void writingInSimuliFile(string simuliFile) {
                     newevent.push_back(to_string(finaldelay));
                     newevent.push_back(output);
                     newevent.push_back(to_string(evaluateValue(output))); //push the value of the output
-                    cout<<"the new evetn is: " <<newevent[0]<<","<<newevent[1]<<" " <<newevent[2]<<endl;
 
-                    // if the value is not empty, then the event will be written to the simuli file and added to the events vector according to its total delay time
                     if(newevent[2] != "-1") {
-                        cout<<"the event will be added"<<endl;
-
                         bool added = false;
                         for(int j = 0; j < events.size(); j++) {
                             int currentDelay = stoi(events[j][0]);
@@ -464,23 +469,66 @@ void writeWaveformSyntax(const string& filename) {
         return;
     }
 
-    //writes the inputs and output and their values over time
+    // Find the maximum length among all input and output vectors
+    size_t maxLength = 0;
+    for (const auto& pair : inputsValue) {
+        maxLength = max(maxLength, pair.second.size());
+    }
+    for (const auto& pair : outputsValue) {
+        maxLength = max(maxLength, pair.second.size());
+    }
+
+    // Make all the vectors have the same length of waveform
+    for (auto& pair : inputsValue) {
+        while (pair.second.size() < maxLength) {
+            pair.second.push_back(".");
+        }
+    }
+
+    for (auto& pair : outputsValue) {
+        while (pair.second.size() < maxLength) {
+            pair.second.push_back(".");
+        }
+    }
+
+    // Start writing to the WaveDrom file
     outFile << "{\n"
-            << "  signal: [\n";
+            << "  signal: [\n"
+            << "    ['Outputs',\n";
 
-    for (auto i = inputsValue.begin(); i != inputsValue.end(); i++) {
-        outFile << "    { name: \"" << i->first << "\", wave: \"";
+    // Write the outputs section
+    for (auto i = outputsValue.begin(); i != outputsValue.end(); i++) {
+        outFile << "      { name: \"" << i->first << "\", wave: \"";
 
-        // Adding wave values for inputs over time
+        // Adding wave values for outputs over time
         for (const auto& value : i->second) {
-            outFile << (value == "1" ? "1" : (value == "0" ? "0" : (value=="."?".": "x")));
+            outFile << (value == "1" ? "1" : (value == "0" ? "0" : (value == "." ? "." : "x")));
         }
         outFile << "\" },\n";
     }
 
-    outFile << "  ]\n"
+    outFile << "    ],\n"
+            << "    ['Inputs',\n";
+
+    // Write the inputs section
+    for (auto i = inputsValue.begin(); i != inputsValue.end(); i++) {
+        outFile << "      { name: \"" << i->first << "\", wave: \"";
+
+        // Adding wave values for inputs over time
+        for (const auto& value : i->second) {
+            outFile << (value == "1" ? "1" : (value == "0" ? "0" : (value == "." ? "." : "x")));
+        }
+        outFile << "\" },\n";
+    }
+
+    // Close the signal array and add configuration settings
+    outFile << "    ]\n"
+            << "  ],\n"
+            << "  'config': { 'hscale': 1 },\n"
+            << "  'head': { 'text': 'Waveform of the Simulator' },\n"
+            << "  'foot': { 'tick': 0, 'every': 1 }\n"
             << "}\n";
 
     outFile.close();
-    cout << "Waveform syntax written to " << filename << endl;
 }
+
