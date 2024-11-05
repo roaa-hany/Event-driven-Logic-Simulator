@@ -397,25 +397,55 @@ void writingInSimuliFile(string simuliFile) {
 
             //checks if the output is the final output or the intermediate output
             if(inputs[event[1]].empty()) {
+                cout<<event[1] <<"is empty and is the final output:"<<endl;
                 simuli << event[0] << "," << event[1] << "," << event[2] << endl; //if the vector of outputs is empty, then this is the final output and will be outputted
 
                 // update the output value to draw the waveform
                 while(currentTime < stoi(event[0])) {
-                    for(auto it = outputs.begin(); it != outputs.end(); it++){
-                        if(outputsValue[it->first].empty()) {
-                            outputsValue[it->first].push_back("x");
-                        }
-                        else {
-                            outputsValue[it->first].push_back(".");
-                        }
+                    // for(auto it = outputs.begin(); it != outputs.end(); it++){
+                    //     if(outputsValue[it->first].empty()) {
+                    //         outputsValue[it->first].push_back("x");
+                    //     }
+                    //     else {
+                    //         outputsValue[it->first].push_back(".");
+                    //     }
+                    if(outputsValue[event[1]].empty()){
+                        outputsValue[event[1]].push_back("x");
+                    }
+                    else {
+                        outputsValue[event[1]].push_back(".");
                     }
                     currentTime++;
                 }
-                outputsValue[event[1]].push_back(event[2]);
-            }
+                // if(outputsValue[event[1]][outputsValue[event[1]].size()-1]==event[2]) {
+                //     outputsValue[event[1]].push_back(".");
+                //     cout<<"dot is added"<<endl;
+                // }
+                // else {
+                //     cout<<"the new value is added"<<endl;
+                //     outputsValue[event[1]].push_back(event[2]);
+                //
+                // }
+                for(int l =outputsValue[event[1]].size()-1; l>=0; l--) {
+                    if(outputsValue[event[1]][l] != ".") {
+                        if(outputsValue[event[1]][l]==event[2]) {
+                            outputsValue[event[1]].push_back(".");
+                            break;
+                        }
+                        else {
+                            outputsValue[event[1]].push_back(event[2]);
+                            break;
+                        }
+                    }
+                }
+                if(outputsValue[event[1]].empty()) {
+                    outputsValue[event[1]].push_back(event[2]);
 
+                }
+            }
             //if the output is an input for another gate, print it, then create a newEvent with this output
             else {
+                cout<<event[1] <<"is notttt empty and is nottt the final output:"<<endl;
                 simuli << event[0] << "," << event[1] << "," << event[2] <<endl;
 
                 int inputssize= inputs[event[1]].size();
